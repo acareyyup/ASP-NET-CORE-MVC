@@ -1,24 +1,9 @@
-﻿@model List<StoreApp.Models.Product>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Document</title>
-</head>
-<body>
+﻿@model List<Product>
 
-    @foreach (StoreApp.Models.Product prd in Model)
-    {
-        <div>
-        <h3>@prd.ProductName</h3>
-        <p>@prd.Price</p>
-        <p>
-            <a href="/Product/Get/@prd.Id">Get Details</a>
-        </p>
-        </div>
-    }
 
-</body>
-</html>
+@foreach (Product prd in Model)
+{
+    <div class="row my-3">
+        <partial name="_ProductCard" model="@prd"></partial>
+    </div>
+}
