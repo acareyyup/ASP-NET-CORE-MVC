@@ -1,4 +1,4 @@
-﻿using Entities.Models;
+using Entities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Repositories.Contracts;
 
@@ -15,7 +15,7 @@ namespace StoreApp.Controllers
 
         public IActionResult Index()
         {
-            var model = _manager.Category.FindAll(false);
+            var model =  _manager.Category.FindAll(false);
             return View(model);
         }
     }

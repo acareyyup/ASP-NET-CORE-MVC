@@ -1,4 +1,4 @@
-﻿@model IQueryable<Product>
+@model IQueryable<Product>
 
 <div class="row">
     <div class="col-md-3">
@@ -8,10 +8,17 @@
         <div class="row my-3">
             @foreach (Product prd in Model)
             {
-                <div class="row my-3">
-                    <partial name="_ProductCard" model="@prd"></partial>
-                </div>
+                <partial name="_ProductCard" model="@prd" />
             }
         </div>
     </div>
 </div>
+
+
+@section Footer{
+    <div>
+        Only for Index footer
+    </div>
+}
+
+

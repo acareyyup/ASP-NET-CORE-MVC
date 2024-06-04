@@ -1,4 +1,3 @@
-﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StoreApp.Areas.Admin.Controllers
@@ -8,7 +7,6 @@ namespace StoreApp.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
-            TempData["info"] = $"Welcome back, {DateTime.Now.ToShortTimeString()}";
             return View();
         }
     }
