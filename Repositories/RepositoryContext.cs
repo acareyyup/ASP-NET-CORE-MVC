@@ -1,4 +1,4 @@
-﻿using Entities;
+﻿using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Repositories
@@ -6,7 +6,7 @@ namespace Repositories
     public class RepositoryContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
-
+        public DbSet<Category> Categories { get; set; }
         public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options)
         {
 
@@ -24,7 +24,16 @@ namespace Repositories
                 new Product() { Id = 5, ProductName = "Deck", Price = 1_500 },
                 new Product() { Id = 6, ProductName = "Camera", Price = 2_000 }
                 );
+
+            modelBuilder.Entity<Category>()
+                .HasData(
+                new Category() { Id = 1, CategoryName = "Book" },
+                new Category() { Id = 2, CategoryName = "Electronic" }
+                );
+
+
         }
+
 
     }
 }
