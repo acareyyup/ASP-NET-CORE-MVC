@@ -24,6 +24,11 @@ namespace Services
                 throw new Exception("Product not found!");
             return product;
         }
+        public void CreateProduct(Product product)
+        {
+            _manager.Product.Create(product);
+            _manager.Save();
+        }
 
     }
 }
