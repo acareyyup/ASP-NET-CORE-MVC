@@ -29,6 +29,13 @@ namespace Services
             _manager.Product.Create(product);
             _manager.Save();
         }
+        public void UpdateOneProduct(Product product)
+        {
+            var entity = _manager.Product.GetOneProduct(product.Id, true);
+            entity.ProductName = product.ProductName;
+            entity.Price = product.Price;
+            _manager.Save();
+        }
 
     }
 }
