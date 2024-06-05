@@ -36,6 +36,15 @@ namespace Services
             entity.Price = product.Price;
             _manager.Save();
         }
+        public void DeleteOneProduct(int id)
+        {
+            Product product = GetOneProduct(id, false);
+            if (product is not null)
+            {
+                _manager.Product.DeleteOneProduct(product);
+                _manager.Save();
+            }
+        }
 
     }
 }
