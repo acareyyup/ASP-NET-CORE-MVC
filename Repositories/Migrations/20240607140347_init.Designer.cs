@@ -12,7 +12,7 @@ using Repositories;
 namespace Repositories.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20240605150904_init")]
+    [Migration("20240607140347_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,11 +64,17 @@ namespace Repositories.Migrations
                     b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ProductName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Summary")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -82,57 +88,64 @@ namespace Repositories.Migrations
                         {
                             Id = 1,
                             CategoryId = 2,
+                            ImageUrl = "/images/1.jpg",
                             Price = 17500m,
-                            ProductName = "Computer"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CategoryId = 2,
-                            Price = 100m,
-                            ProductName = "Keyboard"
+                            ProductName = "Computer",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 3,
                             CategoryId = 2,
+                            ImageUrl = "/images/3.jpg",
                             Price = 500m,
-                            ProductName = "Mouse"
+                            ProductName = "Mouse",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 4,
                             CategoryId = 2,
+                            ImageUrl = "/images/4.jpg",
                             Price = 7000m,
-                            ProductName = "Monitor"
+                            ProductName = "Monitor",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 5,
                             CategoryId = 2,
+                            ImageUrl = "/images/5.jpg",
                             Price = 1500m,
-                            ProductName = "Deck"
+                            ProductName = "Deck",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 6,
                             CategoryId = 2,
+                            ImageUrl = "/images/6.jpg",
                             Price = 2000m,
-                            ProductName = "Camera"
+                            ProductName = "Camera",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 7,
                             CategoryId = 1,
+                            ImageUrl = "/images/7.jpg",
                             Price = 25m,
-                            ProductName = "History"
+                            ProductName = "History",
+                            Summary = ""
                         },
                         new
                         {
                             Id = 8,
                             CategoryId = 1,
+                            ImageUrl = "/images/8.jpg",
                             Price = 45m,
-                            ProductName = "Hamlet"
+                            ProductName = "Hamlet",
+                            Summary = ""
                         });
                 });
 

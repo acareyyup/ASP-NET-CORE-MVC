@@ -29,6 +29,8 @@ namespace Repositories.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Summary = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -53,17 +55,16 @@ namespace Repositories.Migrations
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "CategoryId", "Price", "ProductName" },
+                columns: new[] { "Id", "CategoryId", "ImageUrl", "Price", "ProductName", "Summary" },
                 values: new object[,]
                 {
-                    { 1, 2, 17500m, "Computer" },
-                    { 2, 2, 100m, "Keyboard" },
-                    { 3, 2, 500m, "Mouse" },
-                    { 4, 2, 7000m, "Monitor" },
-                    { 5, 2, 1500m, "Deck" },
-                    { 6, 2, 2000m, "Camera" },
-                    { 7, 1, 25m, "History" },
-                    { 8, 1, 45m, "Hamlet" }
+                    { 1, 2, "/images/1.jpg", 17500m, "Computer", "" },
+                    { 3, 2, "/images/3.jpg", 500m, "Mouse", "" },
+                    { 4, 2, "/images/4.jpg", 7000m, "Monitor", "" },
+                    { 5, 2, "/images/5.jpg", 1500m, "Deck", "" },
+                    { 6, 2, "/images/6.jpg", 2000m, "Camera", "" },
+                    { 7, 1, "/images/7.jpg", 25m, "History", "" },
+                    { 8, 1, "/images/8.jpg", 45m, "Hamlet", "" }
                 });
 
             migrationBuilder.CreateIndex(
