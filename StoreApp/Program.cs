@@ -19,6 +19,8 @@ builder.Services.AddDbContext<RepositoryContext>(x =>
     });
 });
 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
 
 builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
@@ -28,7 +30,8 @@ builder.Services.AddScoped<IServiceManager, ServiceManager>();
 builder.Services.AddScoped<IProductService, ProductManager>();
 builder.Services.AddScoped<ICategoryService, CategoryManager>();
 
-builder.Services.AddSingleton<Cart>();
+builder.Services.AddScoped<Cart>();
+
 
 builder.Services.AddAutoMapper(typeof(Program));
 
@@ -36,6 +39,7 @@ builder.Services.AddAutoMapper(typeof(Program));
 var app = builder.Build();
 
 app.UseStaticFiles();
+app.UseSession();
 app.UseHttpsRedirection();
 app.UseRouting();
 
