@@ -4,6 +4,7 @@ using Repositories;
 using Repositories.Contracts;
 using Services;
 using Services.Contracts;
+using StoreApp.Models;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,7 +21,12 @@ builder.Services.AddDbContext<RepositoryContext>(x =>
 });
 
 builder.Services.AddDistributedMemoryCache();
-builder.Services.AddSession();
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = "StoreApp.Session";
+    options.IdleTimeout = TimeSpan.FromMinutes(10);
+});
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
@@ -30,8 +36,7 @@ builder.Services.AddScoped<IServiceManager, ServiceManager>();
 builder.Services.AddScoped<IProductService, ProductManager>();
 builder.Services.AddScoped<ICategoryService, CategoryManager>();
 
-builder.Services.AddScoped<Cart>();
-
+builder.Services.AddScoped<Cart>(c => SessionCart.GetCart(c));
 
 builder.Services.AddAutoMapper(typeof(Program));
 
