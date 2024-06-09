@@ -22,6 +22,14 @@ namespace Services
         {
             return _manager.Product.GetAllProducts(trackChanges);
         }
+        public IEnumerable<Product> GetLastestProducts(int n, bool trackChanges)
+        {
+            return _manager
+                .Product
+                .FindAll(trackChanges)
+                .OrderByDescending(prd => prd.Id)
+                .Take(n);
+        }
         public IEnumerable<Product> GetAllProductsWithDetails(ProductRequestParameters p)
         {
             return _manager.Product.GetAllProductsWithDetails(p);
