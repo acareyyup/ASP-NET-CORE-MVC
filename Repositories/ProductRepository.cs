@@ -10,6 +10,11 @@ namespace Repositories
         }
 
         public IQueryable<Product> GetAllProducts(bool trackChanges) => FindAll(trackChanges);
+        public IQueryable<Product> GetShowcaseProducts(bool trackChanges)
+        {
+            return FindAll(trackChanges)
+                .Where(p => p.ShowCase.Equals(true));
+        }
 
         public Product? GetOneProduct(int id, bool trackChanges)
         {
@@ -17,5 +22,6 @@ namespace Repositories
         }
         public void DeleteOneProduct(Product product) => Remove(product);
         public void UpdateOneProduct(Product product) => Update(product);
+
     }
 }
