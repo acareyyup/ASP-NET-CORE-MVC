@@ -5,7 +5,6 @@ using Repositories.Contracts;
 using Services;
 using Services.Contracts;
 using StoreApp.Models;
-using System.Reflection;
 
 namespace StoreApp.Infrastructe.Extensions
 {
@@ -16,10 +15,8 @@ namespace StoreApp.Infrastructe.Extensions
         {
             services.AddDbContext<RepositoryContext>(x =>
             {
-                x.UseSqlServer(configuration.GetConnectionString("SqlConnection"), option =>
-                {
-                    option.MigrationsAssembly(Assembly.GetAssembly(typeof(RepositoryContext)).GetName().Name);
-                });
+                x.UseSqlServer(configuration.GetConnectionString("SqlConnection"),
+                    b => b.MigrationsAssembly("StoreApp"));
             });
         }
 
