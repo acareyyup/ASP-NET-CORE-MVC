@@ -14,7 +14,7 @@ namespace Repositories
         public IQueryable<Product> GetAllProducts(bool trackChanges) => FindAll(trackChanges);
         public IQueryable<Product> GetAllProductsWithDetails(ProductRequestParameters p)
         {
-            return p is null
+            return p.CategoryId is null
                 ? _context
                 .Products
                 .Include(prd => prd.Category)
