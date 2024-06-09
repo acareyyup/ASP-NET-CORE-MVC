@@ -1,6 +1,7 @@
 ﻿namespace Entities.RequestParameters
 {
-    internal class RequestParameters
+    public abstract class RequestParameters
     {
+        public String? SearchTerm { get; set; }
     }
 }
