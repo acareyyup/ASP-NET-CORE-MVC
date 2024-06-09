@@ -1,24 +1,17 @@
 using Entities.Models;
-using Microsoft.EntityFrameworkCore;
 using Repositories;
 using Repositories.Contracts;
 using Services;
 using Services.Contracts;
+using StoreApp.Infrastructe.Extensions;
 using StoreApp.Models;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
-builder.Services.AddDbContext<RepositoryContext>(x =>
-{
-    x.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"), option =>
-    {
-        option.MigrationsAssembly(Assembly.GetAssembly(typeof(RepositoryContext)).GetName().Name);
-    });
-});
+builder.Services.ConfigureDbContext(builder.Configuration);
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
