@@ -8,7 +8,7 @@ using Services;
 using Services.Contracts;
 using StoreApp.Models;
 
-namespace StoreApp.Infrastructe.Extensions
+namespace StoreApp.Infrastructure.Extensions
 {
     public static class ServiceExtension
     {
@@ -54,7 +54,7 @@ namespace StoreApp.Infrastructe.Extensions
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
-            services.AddScoped<IAuthService, AuthManager>();
+            
         }
 
         public static void ConfigureServiceRegistration(this IServiceCollection services)
@@ -63,6 +63,7 @@ namespace StoreApp.Infrastructe.Extensions
             services.AddScoped<IProductService, ProductManager>();
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<IOrderService, OrderManager>();
+            services.AddScoped<IAuthService, AuthManager>();
         }
 
         public static void ConfigureRouting(this IServiceCollection services)
