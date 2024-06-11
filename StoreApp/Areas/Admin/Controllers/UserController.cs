@@ -64,6 +64,16 @@ namespace StoreApp.Areas.Admin.Controllers
         }
 
 
+        public async Task<IActionResult> ResetPassword([FromRoute(Name = "id")] string id)
+        {
+            return View(new ResetPasswordDto()
+            {
+                UserName = id
+            });
+        }
+
+
+
 
     }
 }
