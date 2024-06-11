@@ -54,6 +54,7 @@ namespace StoreApp.Infrastructe.Extensions
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IAuthService, AuthManager>();
         }
 
         public static void ConfigureServiceRegistration(this IServiceCollection services)
