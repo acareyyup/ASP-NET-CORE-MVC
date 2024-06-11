@@ -72,7 +72,15 @@ namespace StoreApp.Areas.Admin.Controllers
             });
         }
 
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ResetPassword([FromForm] ResetPasswordDto model)
+        {
+            var result = await _manager.AuthService.ResetPassword(model);
+            return result.Succeeded
+                ? RedirectToAction("Index")
+                : View();
+        }
 
 
     }
